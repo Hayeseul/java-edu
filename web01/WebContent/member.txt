@@ -1,0 +1,9 @@
+{
+
+	"id":["admin1","admin2","admin3"],
+	"pw":["hi123456","hi123456","hi123456"],
+	"name":["yesuel","jinwoo","hyebin"],
+	"tel":["031","041","032"]
+	
+	
+}
