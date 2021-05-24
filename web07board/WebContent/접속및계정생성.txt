@@ -1,0 +1,35 @@
+Microsoft Windows [Version 10.0.19041.804]
+(c) 2020 Microsoft Corporation. All rights reserved.
+
+C:\Users\KOSTA>sqlplus
+
+SQL*Plus: Release 11.2.0.2.0 Production on 목 2월 25 17:20:17 2021
+
+Copyright (c) 1982, 2014, Oracle.  All rights reserved.
+*****관리자계정인 system으로 커넥션****
+Enter user-name: system
+Enter password: hi123456 비번은 타이핑해도 안보임
+
+Connected to:
+Oracle Database 11g Express Edition Release 11.2.0.2.0 - 64bit Production
+**현재 커넥트된 계정
+SQL> show user
+USER is "SYSTEM"
+SQL>
+
+**사용자생성
+SQL> create user web identified by hi123456 account unlock;
+User created.
+
+**접속권한,테이블 생성권한
+SQL> grant connect,resource to java;
+Grant succeeded.
+
+**web계정으로 접속시도.
+SQL> conn web
+Enter password: hi123456안보임
+Connected.
+SQL> show user
+USER is "WEB"
+SQL>
+***********계정생성 성공

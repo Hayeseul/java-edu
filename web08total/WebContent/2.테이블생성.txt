@@ -1,0 +1,168 @@
+C:\Users\KOSTA>sqlplus
+
+SQL*Plus: Release 11.2.0.2.0 Production on 목 2월 25 17:37:36 2021
+
+Copyright (c) 1982, 2014, Oracle.  All rights reserved.
+
+Enter user-name: web
+Enter password:
+
+Connected to:
+Oracle Database 11g Express Edition Release 11.2.0.2.0 - 64bit Production
+
+SQL> show user
+USER is "web"
+SQL>
+
+
+
+SQL>
+
+**테이블 생성
+SQL> create table total( 
+num number,
+title varchar(40), 
+content varchar(4000),
+writer varchar(40), 
+wdate date default sysdate
+id varchar(20), 
+pw varchar(40),
+tel varchar(20),
+);
+
+Table created.
+
+***테이블 삭제
+SQL> drop table test;
+
+Table dropped
+
+
+****자동번호부여기능 : 시퀀스
+create sequence seq_total;
+
+*** 시퀀스 삭제 
+drop sequence seq_total; 
+
+
+***테이블 목록 확인
+SQL> select * from tab;
+TEST
+
+*** 검색 키워드  >> select
+SQL> select * from total;
+no rows selected  << 아직은 데이터 입력전이라서 내용이 없다.
+SQL>
+ 
+***입력 키워드 >> insert 데이터베이스 상의 문자열데이터는 싱글커테이션'값'
+insert into 테이블명(컬럼,컬럼,컬럼...) values(값,값,값...);
+
+insert into board(num, title, content, writer,id, pw, tel) 
+values(seq_total.nextval,'통증부위','허리가 찌릿찌릿','하예슬', 'yeseul', 'yeseul9074','010-6343-9074' );
+
+
+
+1 row created.
+
+SQL> select * from board;
+
+       NUM NAME                              AGE
+---------- ---------------------- ----------
+         1 kim                               33
+
+SQL> commit;
+
+Commit complete.
+
+insert into board(num, title, content, writer,id, pw, tel) 
+values(seq_test.nextval,'두통','머리가 지끈지끈','이혜빈', 'hyebin', 'hyebin9074','010-3535-6363' );
+
+
+
+
+***수정 키워드 >> update
+update 테이블명 set 컬럼=값,컬럼=값,컬럼=값,, where 컬럼=값;
+update test set name='lee',age=55 where num=5;
+
+
+***삭제 키워드 >> delete
+delete from 테이블명 where 컬럼=값;
+delete from test where num=5;
+
+***검색 키워드 >> select
+모두검색 : select 컬럼,컬럼,컬럼,,, from 테이블명;
+select * from test;
+
+
+조건검색 : select 컬럼,컬럼,컬럼,,, from 테이블명 where 컬럼=값;
+select * from test where num=3;
+
+select * from test where name='kim';
+select * from test where name like '%k%';
+select * from test where age=33;
+
+이때 검색할 컬럼명이 테이블의 모든커럼인경우 *표기로 간소화가능
+예:  select * from 테이블명;
+
+
+
+
+////////////////////////////////member/////////////////////////////////////////
+create table test1(
+num number constraint member_num_pk primary key,
+name varchar(20) not null,
+age number
+);
+
+****자동번호부여기능 : 시퀀스
+create sequence seq_test1;
+
+*** 시퀀스 삭제 
+drop sequence seq_test; 
+
+
+
+SQL>
+
+**테이블 생성
+SQL> create table test1(
+    num number,
+   name varchar(20),
+    age number
+    );
+
+Table created.
+
+***테이블 삭제
+SQL> drop table test;
+
+Table dropped
+
+
+***테이블 목록 확인
+SQL> select * from tab;
+TEST
+
+*** 검색 키워드  >> select
+SQL> select * from test;
+no rows selected  << 아직은 데이터 입력전이라서 내용이 없다.
+SQL>
+ 
+***입력 키워드 >> insert 데이터베이스 상의 문자열데이터는 싱글커테이션'값'
+insert into 테이블명(컬럼,컬럼,컬럼...) values(값,값,값...);
+insert into test(num,name,age) values(1,'kim',33);
+SQL> insert into test(num,name,age) values(1,'kim',33);
+
+SQL> insert into test1(num,name,age) values(seq_test.nextval,'kim',33);
+
+1 row created.
+
+SQL> select * from test;
+
+       NUM NAME                              AGE
+---------- ---------------------- ----------
+         1 kim                               33
+
+SQL> commit;
+
+Commit complete.
