@@ -1,0 +1,32 @@
+window키 +R +cmd
+
+sqlplus enter 
+
+Enter user-name: system
+Enter password: hi123456
+
+Connected to 
+Oracle Database 11g Express Edition Release 11.2.0.2.0 - 64bit Production
+**현재 커넥트된 계정 
+SQL> show user
+USER is "SYSTEM"
+SQL>
+**사용자 생성
+SQL> create user java identified by hi123456 account unlock;
+
+User created.
+**접속권한, 테이블 생성권한 
+SQL>
+SQL> grant connect, resource to java;
+
+Grant succeeded.
+
+**자바 계정으로 접속 시도. 
+SQL> conn java
+Enter password:
+Connected.
+SQL>
+SQL> show user
+USER is "JAVA"
+SQL>
+***********계정생성 성공 
